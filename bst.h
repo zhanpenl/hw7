@@ -216,14 +216,14 @@ class BinarySearchTree {
   private:
     Node<KeyType, ValueType>* getSuccesor() {
       Node<KeyType, ValueType>* node;
-      if ( curr->getRight() != NULL) {
+      if ( curr->getRight() != NULL) { // find the minimum in the right sub-tree
       	node = curr->getRight();
       	while ( node->getLeft() != NULL ) node = node->getLeft();      		
       	return node;
       }
 
       node = curr->getParent();
-      while ( node != NULL ) {
+      while ( node != NULL ) { // find bottom-up until NULL or node is the left child of its parent
       	if ( node->getKey() > curr->getKey() ) return node;
       	node = node->getParent();
       }
